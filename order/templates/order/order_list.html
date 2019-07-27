@@ -19,7 +19,8 @@
 	{% endfor %}
 </div>
 {% else %}
-<p>You dont have orders yet!</p>
+<h1>You dont have orders yet!</h1>
+<h2>Submit your order <a href="{% url 'order:create_order' %}">here...</a>
 {% endif %}
 </div>
 <br><br>

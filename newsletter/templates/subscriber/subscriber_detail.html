@@ -1,9 +1,14 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% block title %}Subscription detail{% endblock %}
 {% block content %}
-<h1>{{subscriber.email}}</h1>
+<div class="container">
+<br><br><br>
+<h3>{{subscriber.email}}</h3>
 {% if subscriber.subscribed %}
 <h4>Subscribed</h4>
 {% else %}
 <h4>Unsubscribed</h4>
 {% endif %}
-{% endblock content %}
+ <br><br><br>
+</div>
+{% endblock %}

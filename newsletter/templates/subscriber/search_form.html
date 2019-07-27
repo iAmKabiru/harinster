@@ -1,7 +1,16 @@
-{% extends 'base.html' %}{% block content %}
-            <h4>Email</h4>
-                <form action="{% url 'newsletter:search'  %}" method="get">
-                    <input type="email" name="q">
-                    <input type="submit" value="Submit">
-                </form>
-                {% endblock %}
+{% extends 'base.html' %}
+{% block title %}Search Form{% endblock %}
+{% block content %}
+	<div class="col-sm-12">
+		<div class="container">
+	<br><br>
+	<h4>Email</h4>
+	<form action="{% url 'newsletter:search'  %}" method="get">
+		<input type="email" class="form-control" name="q">
+		<br><br>
+		<input type="submit" value="Submit" class="btn btn-primary">
+	</form>
+</div></div>
+	<br><br><br>
+</div>
+{% endblock %}

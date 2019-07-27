@@ -1,11 +1,12 @@
 {% extends "base.html" %}
-
+{% block title %}Order Form{% endblock %}
 {% block content %}
 {% if heading %}
 <h3>{{heading}}</h3>
 {% endif %}
 <br><br><br>
-<div class="col-sm-12">
+<div class="container">
+    <h4>Order Form</h4>
 <form class="form-vertical" enctype='multipart/form-data' method="POST" action="">
     {% csrf_token %}
     {% if not user.is_authenticated %}

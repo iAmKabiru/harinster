@@ -1,14 +1,27 @@
 {% extends 'base.html' %}
+{% block title %}Shipping List{% endblock %}
 {% block content %}
-{% if object_list %}
-{% for shipping in object_list %}
-<h2>{{shipping.id}}</h2>
-<h2>{{shipping.name}}</h2>
-<h2>{{shipping.route}}</h2>
-<h2>{{shipping.status}}</h2>
-<a href="{% url 'order:shipping_detail' shipping.id %}">detail</a>
-{% endfor %}
+
+<div class="container">
+	<br>
+	{% if object_list %}
+	<div class="row">
+		{% for shipping in object_list %}
+		<div class="col-sm-3">
+			<div class="card bg-info text-white text-center">
+              <div class="card-header border-white">Shipping Id: {{shipping.id}}</div>
+                  <h5 class="card-title">Status: {{shipping.status}}</h5>
+				   <p class="card-text text-warning">Route: {{shipping.route}}</p>
+		         <div class="card-footer"><a href="{% url 'order:shipping_detail' shipping.id %}" style="color:white">Detail</a></div>
+			</div>
+			<br>
+		</div>
+	{% endfor %}
+</div>
 {% else %}
-<h1>You dont have have shipping yet!</h1>
+<h1>You dont have any shipping yet!</h1>
+<h2>Start shipping <a href="{% url 'order:shipping_create' %}">here...</a>
 {% endif %}
+</div>
+<br><br>
 {% endblock %}

@@ -1,8 +1,22 @@
 {% extends "base.html" %}
+{% block title %}Shipping Detail{% endblock %}
 {% block content %}
-<h2>{{shipping.id}}</h2>
-<h2>{{shipping.name}}</h2>
-<h2>{{shipping.route}}</h2>
-<h2>{{shipping.status}}</h2>
-<h3>{{shipping.note}}</h3>
+<br>
+<div class="col-sm-6">
+	<div class="card  text-black">
+		<div class="card-header border-black">Shipping Id: {{shipping.id}}</div>
+		<div class="card-body">
+				   <p class="card-text text-black">Name: {{shipping.name}}</p>
+   				   <p class="card-text text-black">Email: {{shipping.email}}</p>
+ 				   <p class="card-text text-black">phone: {{shipping.phone}}</p>
+ 				   <p class="card-text text-black">Note: {{shipping.note}}</p>
+ 				   <p class="card-text text-black">Route: {{shipping.route}}</p>
+				   <p class="card-text text-black">Shipping Address: {{shipping.shipping_address}}</p>
+				   <p class="card-text text-black">Delivery Address: {{shipping.address}}</p>
+				   <p class="card-text text-black">Date: {{shipping.date}}</p>
+		         <div class="card-footer text-primary">Status: {{shipping.status}}</div>
+		     </div>
+		 </div>
+		</div>
+<br><br><br>
 {% endblock content %}
