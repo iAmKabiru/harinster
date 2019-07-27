@@ -1,0 +1,7 @@
+{% extends 'base.html' %}{% block content %}
+            <h4>Email</h4>
+                <form action="{% url 'newsletter:search'  %}" method="get">
+                    <input type="email" name="q">
+                    <input type="submit" value="Submit">
+                </form>
+                {% endblock %}

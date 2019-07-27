@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Order Detail{% endblock %}
+{% block content %}
+<br>
+<div class="col-sm-6">
+<div class="card  text-black">
+              <div class="card-header border-black">Order Id: {{order.id}}</div>
+              <div class="card-body">
+				   <p class="card-text text-black">Name: {{order.name}}</p>
+   				   <p class="card-text text-black">Email: {{order.email}}</p>
+ 				   <p class="card-text text-black">phone: {{order.phone}}</p>
+				   <p class="card-text text-black">Shipping Address: {{order.address}}</p>
+				   <p class="card-text text-black">Date: {{order.date}}</p>
+				   <hr>
+				   <center><u>LINKS</u></center>
+				   {% for link in order.links.all %}
+				   <p><a href="{{link.link}}">{{link.link}}</a></p>
+				   {% endfor %}
+				   <hr>
+				   <center><u>SCREENSHOTS</u></center>
+				   {% for screenshot in order.screenshots.all %}
+<p><img src="/media/{{screenshot.screenshot}}" class="img img-fluid"></p>
+{% endfor %}
+			</div>
+		         <div class="card-footer text-primary">Status: {{order.status}}</div>
+			</div>
+</div>
+<br><br><br>
+{% endblock content %}

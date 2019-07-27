@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Order List{% endblock %}
+{% block content %}
+
+<div class="container">
+	<br>
+	{% if object_list %}
+	<div class="row">
+		{% for order in object_list %}
+		<div class="col-sm-3">
+			<div class="card bg-info text-white text-center">
+              <div class="card-header border-white">Order Id: {{order.id}}</div>
+                  <h5 class="card-title">Status:</h5>
+				   <p class="card-text text-warning">{{order.status}}</p>
+		         <div class="card-footer"><a href="{% url 'order:order_detail' order.id %}" style="color:white">Detail</a></div>
+			</div>
+			<br>
+		</div>
+	{% endfor %}
+</div>
+{% else %}
+<p>You dont have orders yet!</p>
+{% endif %}
+</div>
+<br><br>
+{% endblock %}

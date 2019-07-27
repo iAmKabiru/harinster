@@ -1,0 +1,19 @@
+{% extends 'base.html' %}{% block content %}
+            <h5>Email  <strong>{{ query }}</strong> Found</h5>
+        </div>
+        <div class="panel-body ">
+
+            <div class="container-fluid ">
+                {% if subscriber %}
+                <ul>
+                    {% for subscriber in subscriber %}
+                    <a href="{% url 'newsletter:update_subscription' subscriber.id %}" class="btn btn-primary ">Update Subscription</a>
+                    <hr> {% endfor %}
+                </ul>
+                {% else %}
+                <p>No email matched your search </p>
+                {% endif %} {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>

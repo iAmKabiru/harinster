@@ -1,0 +1,9 @@
+{% block subscribe %}
+{% endblock %}
+<div style="width: 18rem;">
+  <form method="POST">
+  {% csrf_token %}
+  <p>{{form.as_p}}</p>
+  <input type="submit" value="submit">
+  </form>
+</div>

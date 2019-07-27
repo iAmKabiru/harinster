@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="col-sm-12">
+<div class="jumbotron text-white">
+	<h1 style="font-weight:bold;"><center>Buy from UK, get it in Nigeria</center></h1>
+	<center><i class="material-icons" style="font-size:300px;">shopping_cart</i></center>
+</div>
+
+<!--
+<div class="row">
+<div class="col-sm-3"><center><img src="https://img.icons8.com/dusk/64/000000/shop.png"></center></div>
+<div class="col-sm-3"><center><img src="https://img.icons8.com/dusk/64/000000/shop.png"></center></div>
+<div class="col-sm-3"><center><img src="https://img.icons8.com/dusk/64/000000/shop.png"></center></div>
+<div class="col-sm-3"><center><img src="https://img.icons8.com/dusk/64/000000/shop.png"></center></div>
+</div>
+-->
+<br><br>
+<h3 style="font-weight:bold;"><center>Featured Stores</center></h3>
+<div class="row">
+	{% for store in object_list %} 
+	<div class="col-sm-3"><center>
+		<div class="card"style="width: 18rem;">
+			<a href="{{store.url}}"><img src="/media/{{store.logo}}" class="card-img-top img img-fluid" alt="{{store.name}}">
+			</a>
+		</div>
+	</center>
+	<br>
+</div>
+{% endfor %}
+</div>
+</div>
+<br>
+<br>
+{% endblock %}

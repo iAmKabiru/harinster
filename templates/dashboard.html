@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<br><br>
+<div class="container">
+<div class="row">
+<div class="col-sm-6">
+<div class="card bg-success text-center text-success" style="height:400px;">
+  <div class="card-header">
+  <h1><center><a href="{% url 'order:order_list' %}" style="color:white;font-weight:bold">ORDERS</center></h1>
+  </div>
+  <br><br><br>
+ <h1 class="card-text" style="font-size:100px;">{{orders}}</h1>
+</div>
+<br>
+</div>
+
+<div class="col-sm-6">
+<div class="card text-center bg-info" style="height:400px;">
+  <div class="card-header">
+    <h1><center><a href="{% url 'order:shipping_list' %}" style="color:white;font-weight:bold">SHIPPINGS</center></h1>
+  </div>
+  <br><br><br>
+ <h1 class="card-text" style="font-size:100px;">{{shippings}}</h1>
+</div>
+</div>
+</div>
+</div>
+<br><br>
+
+{% endblock content %}
