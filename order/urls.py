@@ -12,7 +12,8 @@ urlpatterns = [
     re_path(r'^order/create-order', create_order, name='create_order'),
     path('orders', views.OrderList.as_view(), name='order_list'),
     path('order-detail/<int:pk>', views.OrderDetail.as_view(), name='order_detail'),
-    path('new-shipping', views.ShippingCreate.as_view(), name = 'shipping_create'),
+    #path('new-shipping', views.ShippingCreate.as_view(), name = 'shipping_create'),
+    path('new-shipping', views.create_shipping, name='shipping_create'),
     path('shippings', views.ShippingList.as_view(), name='shipping_list'),
     path('shipping-detail/<int:pk>', views.ShippingDetail.as_view(), name='shipping_detail'),
 ]

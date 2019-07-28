@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +25,19 @@ urlpatterns = [
     path('', include('order.urls')),
     path('', include('newsletter.urls')),
     path('/users/', include('django.contrib.auth.urls')),
+    # pages urls
+    path('howto', TemplateView.as_view(template_name='pages/howto.html'), name='howto'),
+    path('about', TemplateView.as_view(template_name='pages/about.html'), name='about'),
+    path('faq', TemplateView.as_view(template_name='pages/faq.html'), name='faq'),
+    path('contact', TemplateView.as_view(template_name='pages/contact.html'), name='contact'),
+    path('customer-service', TemplateView.as_view(template_name='pages/customer_service.html'), name='customer_service'),
+    path('terms-and-conditions', TemplateView.as_view(template_name='pages/terms.html'), name='terms'),
+    path('privacy-policy', TemplateView.as_view(template_name='pages/privacy_policy.html'), name='privacy_policy'),
+
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+admin.site.site_header = "Harinster"
+admin.site.site_title = "Harinster"
+admin.site.index_title = "Harinster"

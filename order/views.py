@@ -82,6 +82,31 @@ class OrderList(LoginRequiredMixin, ListView):
 class OrderDetail(DetailView):
     model = Order
 
+
+
+def create_shipping(request):
+    template_name = 'shipping/shipping_form.html'
+
+    if request.method == 'POST':
+        form = ShippingForm(request.POST)
+        if form.is_valid():
+            if request.user.is_authenticated:
+                shipping = form.save(commit=False)
+                shipping.name = request.user.get_full_name()
+                shipping.email = request.user.email
+                shipping.phone = request.user.phone
+                shipping.user = request.user
+                form.save()
+            else:
+                shipping = form.save()
+            return redirect('order:shipping_detail', pk=shipping.pk)
+    else:
+        form = ShippingForm()
+    return render(request, template_name, context={'form':form})
+
+
+
+"""
 class ShippingCreate(CreateView):
     model = Shipping
     form_class = ShippingForm
@@ -89,7 +114,7 @@ class ShippingCreate(CreateView):
 
     def get_success_url(self):
         return reverse('order:shipping_detail', kwargs={'pk':self.object.pk})
-
+"""
 
 class ShippingList(LoginRequiredMixin, ListView):
     model = Shipping

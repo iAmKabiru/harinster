@@ -104,4 +104,4 @@ class ShippingForm(forms.ModelForm):
     
     class Meta:
         model = Shipping
-        fields = ('name','email','phone','route','shipping_address', 'address', 'note')
+        exclude = ('status', 'user')

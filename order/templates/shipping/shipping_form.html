@@ -2,11 +2,35 @@
 {% block title %}shipping Request{% endblock %}
 {% block content %}
 <div class="container">
+<br><br>
 	<h4>Shipping Form</h4>
 <form method="POST">
-	{% load crispy_forms_tags %}
 {% csrf_token %}
-{{form|crispy}}
+{% if not user.is_authenticated %}
+<div id="div_id_name" class="form-group"> 
+    <label for="id_name" class="col-form-label ">Name</label> 
+    <div class=""> <input type="text" name="name" maxlength="255" class="textinput textInput form-control" id="id_name"> </div> </div> 
+    <div id="div_id_email" class="form-group"> <label for="id_email" class="col-form-label ">
+                Email
+            </label> <div class=""> <input type="email" name="email" maxlength="254" class="emailinput form-control" id="id_email"> </div> </div> <div id="div_id_phone" class="form-group"> <label for="id_phone" class="col-form-label ">
+                Phone
+            </label> <div class=""> <input type="text" name="phone" maxlength="20" class="textinput textInput form-control" id="id_phone"> </div> </div> 
+            {% endif %}
+            {% if not user.is_authenticated or user.is_authenticated %}
+            <div id="div_id_shipping_address" class="form-group"> <label for="id_shipping_address" class="col-form-label  requiredField">
+                Shipping Address<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="shipping_address" maxlength="1000" class="textinput textInput form-control" required id="id_shipping_address"> </div> </div> <div id="div_id_address" class="form-group"> <label for="id_address" class="col-form-label ">
+                Delivery Address
+            </label> <div class=""> <input type="text" name="address" maxlength="255" class="textinput textInput form-control" id="id_address"> </div> </div> <div id="div_id_route" class="form-group"> <label for="id_route" class="col-form-label  requiredField">
+                Route<span class="asteriskField">*</span> </label> <div class=""> <select name="route" class="select form-control" required id="id_route"> <option value="" selected>---------</option> <option value="UK to Nigeria">UK to Nigeria</option> <option value="Nigeria to UK">Nigeria to UK</option>
+
+</select> </div> </div> <div id="div_id_note" class="form-group"> <label for="id_note" class="col-form-label ">
+                Note
+            </label> <div class=""> <textarea name="note" cols="40" rows="10" class="textarea form-control" id="id_note">
+</textarea> </div> </div>
+{% endif %}
+
+
+
 <input type="submit" class="btn btn-primary" value="submit">
 </form>
 </div>

@@ -1,0 +1,64 @@
+{% extends "admin/base_site.html" %} {% load i18n static %}{% load admin_menu %} {% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/dashboard.css'%}"/>
+<style>
+.card{
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+</style>
+{% endblock %} {% block coltype %}colMS{% endblock %} {% block bodyclass %}{{ block.super }} dashboard{% endblock %} {% block breadcrumbs %}{% endblock %} {% block content %}
+
+<div class="container">
+    <div id="content-main">
+<div class="row">
+<div class="col-sm-6">
+<div class="card bg-info text-center text-success" style="height:300px;">
+  <div class="card-header">
+  <h1 style="color:white;font-weight:bold">ORDERS</h1>
+  </div>
+  <br><br><br>
+ <h1 class="card-text" style="color:white;font-size:100px;">7</h1>
+</div>
+<br>
+</div>
+
+<div class="col-sm-6">
+<div class="card text-center bg-danger" style="height:300px;">
+  <div class="card-header">
+    <h1 style="color:white;font-weight:bold">SHIPPINGS</h1>
+  </div>
+  <br><br><br>
+ <h1 class="card-text" style="color:white;font-size:100px;">5</h1>
+</div>
+<br>
+</div>
+
+
+
+<div class="col-sm-6">
+<div class="card text-center bg-success" style="height:300px;">
+  <div class="card-header">
+    <h1 style="color:white;font-weight:bold">STORES</h1>
+  </div>
+  <br><br><br>
+ <h1 class="card-text" style="color:white;font-size:100px;">5</h1>
+</div>
+<br>
+</div>
+
+
+<div class="col-sm-6">
+<div class="card text-center bg-warning" style="height:300px;">
+  <div class="card-header">
+    <h1 style="color:white;font-weight:bold">USERS</h1>
+  </div>
+  <br><br><br>
+ <h1 class="card-text" style="color:white;font-size:100px;">5</h1>
+</div>
+</div>
+</div>
+
+    </div>
+</div>
+
+{% endblock %}
