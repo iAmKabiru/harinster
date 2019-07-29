@@ -32,7 +32,7 @@ users = User.objects.all().count()
 """
 urlpatterns = [
     #path('admin/', admin.site.urls, {'extra_context' : {'orders': orders, 'shippings':shippings, 'stores':stores, 'users':users }}),
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
     path('', include('users.urls')),
     path('', include('order.urls')),
     path('', include('newsletter.urls')),
