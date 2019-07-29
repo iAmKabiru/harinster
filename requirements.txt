@@ -1,0 +1,16 @@
+dj-database-url==0.4.2
+Django==2.1.4
+wheel==0.31.1
+gunicorn==19.7.1
+psycopg2==2.7.4
+python-decouple==3.1
+whitenoise==3.3.0
+django-crispy-forms==1.7.2
+pytz==2018.9
+sqlparse==0.3.0
+static==1.1.1
+pystache
+Pillow
+Markdown
+django-adminlte
+

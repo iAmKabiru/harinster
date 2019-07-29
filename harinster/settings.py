@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +22,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'v7657tr#feman4_3o2(!ruqty3dcmx*bn23-a^klvm1e!0yo!3'
+#SECRET_KEY = 'v7657tr#feman4_3o2(!ruqty3dcmx*bn23-a^klvm1e!0yo!3'
+SECRET_KEY = config('SECRET_KEY') 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+#DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool) 
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,18 +84,23 @@ WSGI_APPLICATION = 'harinster.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
+
+# HEROKU DATABASE CONFIG
+DATABASES = { 'default':
+dj_database_url.config( default=config('DATABASE_URL') ) }
+
+#DATABASES = {
+ #   'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':  'harinster',
-        'USER' : 'harinster',
-        'PASSWORD' : 'harinster',
-        'HOST' : 'localhost',
-        'PORT' : '',
-    }
-}
+  #      'ENGINE': 'django.db.backends.postgresql_psycopg2',
+   #     'NAME':  'harinster',
+    #    'USER' : 'harinster',
+     #   'PASSWORD' : 'harinster',
+      #  'HOST' : 'localhost',
+       # 'PORT' : '',
+    #}
+#}
 
 
 # Password validation
@@ -129,8 +139,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = (
+     os.path.join(PROJECT_ROOT, 'static'),
+ )
+
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
