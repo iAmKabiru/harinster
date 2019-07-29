@@ -13,4 +13,5 @@ pystache
 Pillow
 Markdown
 django-adminlte
+django-adminlte2
 
