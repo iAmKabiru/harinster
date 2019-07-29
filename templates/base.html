@@ -114,15 +114,14 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         <a href="#" id="footer-link"><img src="https://img.icons8.com/color/50/000000/instagram-new.png"></a>
         <a href="#" id="footer-link"><img src="https://img.icons8.com/color/48/000000/linkedin.png"></a>
     </div>
-
-    <div class="card col-md-4">
+    <div class="card bg-info col-md-4">
         <form action="{% url 'newsletter:subscribe'  %}" method="get">
             <div class="form-group">
-                <h4 style="font-weight:bold;"><center>Newsletter</center></h4>
-                <h6 style="color:blue;"><center>Subscribe to our newsltter and never miss on whats hot</center></h6>
+                <h4 style="font-weight:bold; color:white;"><center>Newsletter</center></h4>
+                <h6 style="color:white;"><center>Subscribe to our newsltter and never miss on whats hot</center></h6>
                 <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
-            <button type="submit" class="form-control btn btn-success">Subscribe</button>
+            <button type="submit" class="form-control btn btn-warning">Subscribe</button>
             <br><br>
         </form>
     </div>

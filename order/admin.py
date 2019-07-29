@@ -1,4 +1,5 @@
 from django.utils.safestring import mark_safe
+from django.contrib.admin import AdminSite
 from django.contrib import admin
 from django import forms
 from django.forms import ModelForm
@@ -28,6 +29,7 @@ class LinkAdmin(admin.ModelAdmin):
 class ScreenshotInline(admin.StackedInline):
     list_per_page = 50
     model = Screenshot
+    extra = 1
     readonly_fields = ['screenshot_image']
 
     def screenshot_image(self, obj):
@@ -42,6 +44,7 @@ class ScreenshotInline(admin.StackedInline):
 class LinkInline(admin.StackedInline):
     list_per_page = 50
     model = Link
+    extra = 1
 
 
 class OrderAdmin(admin.ModelAdmin):
@@ -71,11 +74,6 @@ class ShippingAdmin(admin.ModelAdmin):
     search_fields = ['id', 'name', 'email', 'route', 'status']
     model = Shipping
     form = ShippingForm
-
-
-
-
-
 
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Link, LinkAdmin)
