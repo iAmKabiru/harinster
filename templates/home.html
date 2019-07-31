@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<div class="col-sm-12">
+
 <div class="card bg-dark text-white">
   <img src="https://res.cloudinary.com/kabiru/image/upload/v1564193906/london.jpg" class="card-img img-fluid" alt="...">
   <div class="card-img-overlay">
@@ -13,10 +13,11 @@
 <br><br>
 <h3 style="font-weight:bold;"><center>Featured Stores</center></h3>
 <hr>
+<div class="container">
 <div class="row">
 	{% for store in object_list %} 
 	<div class="col-sm-3"><center>
-		<div class="card"style="width: 18rem;">
+		<div class="card">
 			<a href="{{store.url}}"><img src="/media/{{store.logo}}" class="card-img-top img img-fluid img-responsive" alt="{{store.name}}">
 			</a>
 		</div>
@@ -26,5 +27,6 @@
 {% endfor %}
 </div>
 </div>
+
 
 {% endblock %}

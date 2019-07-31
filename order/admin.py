@@ -75,6 +75,7 @@ class ShippingAdmin(admin.ModelAdmin):
     model = Shipping
     form = ShippingForm
 
+
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Link, LinkAdmin)
 admin.site.register(Store, StoreAdmin)
