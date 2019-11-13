@@ -44,29 +44,49 @@
 
 
     {% endif %}
+
 {{ formset.management_form }}
 {% for form in formset %}
+<div class="row form-row spacer">
+    <div class="col-2">
+        <label>{{form.link.label}}</label>
+    </div>
+    <div class="col-4">
         <div class="input-group">
             {{form.link}}
             <div class="input-group-append">
                 <button class="btn btn-success add-form-row">+</button>
             </div>
         </div>
+    </div>
+</div>
 {% endfor %}
-<br>
+
 {{ picset.management_form }}
 {% for pic in picset %}
+<div class="row image-form-row spacer">
+    <div class="col-2">
+        <label>{{pic.screenshot.label}}</label>
+    </div>
+    <div class="col-4">
         <div class="input-group">
             {{pic.screenshot}}
             <div class="input-group-append">
-                <button class="btn btn-success add-pic-form-row">+</button>
+                <button class="btn btn-success add-image-form-row">+</button>
             </div>
         </div>
+    </div>
+</div>
 {% endfor %}
-<br>
 
-        <button type="submit" class="btn btn-danger">submit</button>
 
+
+
+<div class="row spacer">
+    <div class="col-4 offset-2">
+        <input type="submit" class="btn btn-block btn-primary" value="submit">
+    </div>
+</div>
 </form>
 </div>
 <br><br><br>
@@ -76,25 +96,25 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script type="text/javascript">
 function updateElementIndex(el, prefix, ndx) {
-    var id_regex = new RegExp('(' + prefix + '-\\d+)');
-    var replacement = prefix + '-' + ndx;
+    let id_regex = new RegExp('(' + prefix + '-\\d+)');
+    let replacement = prefix + '-' + ndx;
     if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
     if (el.id) el.id = el.id.replace(id_regex, replacement);
     if (el.name) el.name = el.name.replace(id_regex, replacement);
 }
 function cloneMore(selector, prefix) {
-    var newElement = $(selector).clone(true);
-    var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+    let newElement = $(selector).clone(true);
+    let total = $('#id_' + prefix + '-TOTAL_FORMS').val();
     newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
-        var name = $(this).attr('name')
+        let name = $(this).attr('name')
         if(name) {
             name = name.replace('-' + (total-1) + '-', '-' + total + '-');
-            var id = 'id_' + name;
+            let id = 'id_' + name;
             $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
         }
     });
     newElement.find('label').each(function() {
-        var forValue = $(this).attr('for');
+        let forValue = $(this).attr('for');
         if (forValue) {
           forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
           $(this).attr({'for': forValue});
@@ -103,7 +123,7 @@ function cloneMore(selector, prefix) {
     total++;
     $('#id_' + prefix + '-TOTAL_FORMS').val(total);
     $(selector).after(newElement);
-    var conditionRow = $('.form-row:not(:last)');
+    let conditionRow = $('.form-row:not(:last)');
     conditionRow.find('.btn.add-form-row')
     .removeClass('btn-success').addClass('btn-danger')
     .removeClass('add-form-row').addClass('remove-form-row')
@@ -111,12 +131,12 @@ function cloneMore(selector, prefix) {
     return false;
 }
 function deleteForm(prefix, btn) {
-    var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+    let total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
     if (total > 1){
         btn.closest('.form-row').remove();
-        var forms = $('.form-row');
+        let forms = $('.form-row');
         $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
-        for (var i=0, formCount=forms.length; i<formCount; i++) {
+        for (let i=0, formCount=forms.length; i<formCount; i++) {
             $(forms.get(i)).find(':input').each(function() {
                 updateElementIndex(this, prefix, i);
             });
@@ -134,34 +154,32 @@ $(document).on('click', '.remove-form-row', function(e){
     deleteForm('form', $(this));
     return false;
 });
-
 </script>
 
 
 
-
-<!-----pic script-->
+<!--Image script-->
 <script type="text/javascript">
-function updateIndex(el, prefix, ndx) {
-    var id_regex = new RegExp('(' + prefix + '-\\d+)');
-    var replacement = prefix + '-' + ndx;
+function updateImageElementIndex(el, prefix, ndx) {
+    let id_regex = new RegExp('(' + prefix + '-\\d+)');
+    let replacement = prefix + '-' + ndx;
     if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
     if (el.id) el.id = el.id.replace(id_regex, replacement);
     if (el.name) el.name = el.name.replace(id_regex, replacement);
 }
-function clonePic(selector, prefix) {
-    var newElement = $(selector).clone(true);
-    var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+function cloneMoreImage(selector, prefix) {
+    let newElement = $(selector).clone(true);
+    let total = $('#id_' + prefix + '-TOTAL_FORMS').val();
     newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
-        var name = $(this).attr('name')
+        let name = $(this).attr('name')
         if(name) {
             name = name.replace('-' + (total-1) + '-', '-' + total + '-');
-            var id = 'id_' + name;
+            let id = 'id_' + name;
             $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
         }
     });
     newElement.find('label').each(function() {
-        var forValue = $(this).attr('for');
+        let forValue = $(this).attr('for');
         if (forValue) {
           forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
           $(this).attr({'for': forValue});
@@ -170,38 +188,105 @@ function clonePic(selector, prefix) {
     total++;
     $('#id_' + prefix + '-TOTAL_FORMS').val(total);
     $(selector).after(newElement);
-    var conditionRow = $('.pic-form-row:not(:last)');
-    conditionRow.find('.btn.add-pic-form-row')
+    let conditionRow = $('.image-form-row:not(:last)');
+    conditionRow.find('.btn.add-image-form-row')
     .removeClass('btn-success').addClass('btn-danger')
-    .removeClass('add-pic-form-row').addClass('remove-form-row')
+    .removeClass('add-image-form-row').addClass('remove-image-form-row')
     .html('-');
     return false;
 }
-function deletePicForm(prefix, btn) {
-    var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+function deleteFormImage(prefix, btn) {
+    let total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
     if (total > 1){
-        btn.closest('.pic-form-row').remove();
-        var forms = $('.pic-form-row');
+        btn.closest('.image-form-row').remove();
+        let forms = $('.image-form-row');
         $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
-        for (var i=0, formCount=forms.length; i<formCount; i++) {
+        for (let i=0, formCount=forms.length; i<formCount; i++) {
             $(forms.get(i)).find(':input').each(function() {
-                updateIndex(this, prefix, i);
+                updateImageElementIndex(this, prefix, i);
             });
         }
     }
     return false;
 }
-$(document).on('click', '.add-pic-form-row', function(e){
+$(document).on('click', '.add-image-form-row', function(e){
     e.preventDefault();
-    clonePic('.pic-form-row:last', 'pic');
+    cloneMore('.image-form-row:last', 'form');
     return false;
 });
-$(document).on('click', '.remove-form-row', function(e){
+$(document).on('click', '.remove-image-form-row', function(e){
     e.preventDefault();
-    deletePicForm('pic', $(this));
+    deleteForm('form', $(this));
+    return false;
+});
+</script>
+
+
+<!--IMAGE script-->
+
+
+{% comment %} <script type="text/javascript">
+function updateImageElementIndex(ell, prefixx, ndxx) {
+    var id_regexx = new RegExp('(' + prefixx + '-\\dd+)');
+    var replacementt = prefixx + '-' + ndxx;
+    if ($(ell).attr("for")) $(ell).attr("for", $(ell).attr("for").replace(id_regexx, replacementt));
+    if (ell.id) ell.id = ell.id.replace(id_regexx, replacementt);
+    if (ell.name) ell.name = ell.name.replace(id_regexx, replacementt);
+}
+function cloneImageMore(selectorr, prefixx) {
+    var newElementt = $(selectorr).clone(true);
+    var totall = $('#id_' + prefixx + '-TOTAL_IMAGE_FORMS').val();
+    newElementt.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+        var namee = $(this).attr('name')
+        if(namee) {
+            namee = namee.replace('-' + (totall-1) + '-', '-' + totall + '-');
+            var idd = 'id_' + namee;
+            $(this).attr({'name': namee, 'id': idd}).val('').removeAttr('checked');
+        }
+    });
+    newElementt.find('label').each(function() {
+        var forValuee = $(this).attr('for');
+        if (forValuee) {
+          forValuee = forValuee.replace('-' + (totall-1) + '-', '-' + totall + '-');
+          $(this).attr({'for': forValuee});
+        }
+    });
+    totall++;
+    $('#id_' + prefixx + '-TOTAL_IMAGE_FORMS').val(totall);
+    $(selectorr).after(newElementt);
+    var conditionRoww = $('.image-form-row:not(:last)');
+    conditionRoww.find('.btn.add-image-form-row')
+    .removeClass('btn-success').addClass('btn-danger')
+    .removeClass('add-image-form-row').addClass('remove-image-form-row')
+    .html('-');
+    return false;
+}
+function deleteFormm(prefixx, btn) {
+    var totall = parseInt($('#id_' + prefixx + '-TOTAL_IMAGE_FORMS').val());
+    if (totall > 1){
+        btn.closest('.image-form-row').remove();
+        var formss = $('.image-form-row');
+        $('#id_' + prefixx + '-TOTAL_IMAGE_FORMS').val(formss.length);
+        for (var i=0, formCountt=formss.length; i<formCountt; i++) {
+            $(formss.get(i)).find(':input').each(function() {
+                updateElementIndexx(this, prefixx, i);
+            });
+        }
+    }
+    return false;
+}
+$(document).on('click', '.add-image-form-row', function(er){
+    er.preventDefault();
+    cloneMore('.image-form-row:last', 'pic');
+    return false;
+});
+$(document).on('click', '.remove-form-row', function(er){
+    er.preventDefault();
+    deleteForm('pic', $(this));
     return false;
 });
 
-</script>
-<!------->
+
+</script> {% endcomment %}
+
 {% endblock %}

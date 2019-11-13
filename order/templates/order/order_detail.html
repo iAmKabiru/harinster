@@ -20,7 +20,9 @@
 				   <hr>
 				   <center><u>SCREENSHOTS</u></center>
 				   {% for screenshot in order.screenshots.all %}
+				   {% if screenshot %}
 <p><img src="/media/{{screenshot.screenshot}}" class="img img-fluid"></p>
+{% endif %}
 {% endfor %}
 			</div>
 		         <div class="card-footer text-primary">Status: {{order.status}}</div>

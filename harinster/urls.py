@@ -22,15 +22,16 @@ from order.models import Order, Shipping, Store
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
-
+"""
 orders = Order.objects.all().count()
 shippings = Shipping.objects.all().count()
 stores = Store.objects.all().count()
 users = User.objects.all().count()
+"""
 
 urlpatterns = [
-    path('admin/', admin.site.urls, {'extra_context' : {'orders': orders, 'shippings':shippings, 'stores':stores, 'users':users }}),
-    #path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls, {'extra_context' : {'orders': orders, 'shippings':shippings, 'stores':stores, 'users':users }}),
+    path('admin/', admin.site.urls),
     path('', include('users.urls')),
     path('', include('order.urls')),
     path('', include('newsletter.urls')),
