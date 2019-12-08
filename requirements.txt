@@ -12,6 +12,4 @@ static==1.1.1
 pystache
 Pillow
 Markdown
-django-adminlte
 django-adminlte2
-
